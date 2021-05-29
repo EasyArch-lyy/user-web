@@ -16,14 +16,6 @@ export const userInfo = (params) => {
 export const register = (params) => {
   return http.fetchPost('/member/register', params)
 }
-// 上传图片
-export const upload = (params) => {
-  return http.fetchPost('/member/imgaeUpload', params)
-}
-// 修改头像
-export const updateheadimage = (params) => {
-  return http.fetchPost('/member/updateheadimage', params)
-}
 
 // 获取用户收货地址
 export const getReceiveAddress = () => {

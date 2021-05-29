@@ -133,7 +133,6 @@
 <!--                  <a @click="changGoods(i, item)" :class="{active:i===choosePage}">{{item.picUrl}}</a>-->
 <!--                </li>-->
               </ul>
-              <div></div>
             </div>
           </div>
         </div>
