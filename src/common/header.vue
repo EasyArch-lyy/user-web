@@ -21,6 +21,7 @@
                 :on-icon-click="handleIconClick"
                 @keydown.enter.native="handleIconClick">
               </el-autocomplete>
+              <router-link to="/"><a @click="changePage(1)">首页</a></router-link>
               <router-link to="/pms"><a @click="changePage(2)">全部商品</a></router-link>
             </div>
             <div class="nav-aside" ref="aside" :class="{fixed:st}">
@@ -119,22 +120,6 @@
       </header>
       <slot name="nav">
         <div class="nav-sub" :class="{fixed:st}">
-          <div class="nav-sub-bg"></div>
-          <div class="nav-sub-wrapper" :class="{fixed:st}">
-            <div class="w">
-              <ul class="nav-list2">
-                <li>
-                  <router-link to="/"><a @click="changGoods(-1)" :class="{active:choosePage===-1}">首页</a></router-link>
-                </li>
-                <li>
-                  <a @click="changGoods(-2)" :class="{active:choosePage===-2}">全部</a>
-                </li>
-<!--                <li v-for="(item,i) in navList" :key="i">-->
-<!--                  <a @click="changGoods(i, item)" :class="{active:i===choosePage}">{{item.picUrl}}</a>-->
-<!--                </li>-->
-              </ul>
-            </div>
-          </div>
         </div>
       </slot>
     </div>

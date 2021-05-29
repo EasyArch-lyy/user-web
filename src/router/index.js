@@ -20,6 +20,7 @@ const PmsDetails = () => import('/page/Pms/product/item/productDetail.vue')
 const User = () => import('/page/User/user.vue')
 const Order = () => import('/page/Order/order.vue')
 const ReceiveAddress = () => import('/page/User/children/addressList.vue')
+const Information = () => import('/page/User/children/information.vue')
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -65,7 +66,7 @@ export default new Router({
       children: [
         {path: 'orderList', name: '订单列表', component: Order},
         // {path: 'orderDetail', name: '订单详情', component: orderDetail},
-        // {path: 'information', name: '账户资料', component: information},
+        {path: 'information', name: '账户资料', component: Information},
         {path: 'addressList', name: '收货地址', component: ReceiveAddress}
         // {path: 'coupon', name: '我的优惠', component: coupon},
         // {path: 'support', name: '售后服务', component: support},

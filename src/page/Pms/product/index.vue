@@ -100,40 +100,6 @@
         this.currentPage = 1
         this._getAllGoods()
       }
-      // _getAllGoods () {
-      //   let cid = this.$route.query.cid
-      //   if (this.min !== '') {
-      //     this.min = Math.floor(this.min)
-      //   }
-      //   if (this.max !== '') {
-      //     this.max = Math.floor(this.max)
-      //   }
-      //   let params = {
-      //     params: {
-      //       page: this.currentPage,
-      //       size: this.pageSize,
-      //       sort: this.sort,
-      //       priceGt: this.min,
-      //       priceLte: this.max,
-      //       cid: cid
-      //     }
-      //   }
-      //   // eslint-disable-next-line no-undef
-      //   getAllGoods(params).then(res => {
-      //     if (res.success === true) {
-      //       this.total = res.result.total
-      //       this.goods = res.result.data
-      //       this.noResult = false
-      //       if (this.total === 0) {
-      //         this.noResult = true
-      //       }
-      //       this.error = false
-      //     } else {
-      //       this.error = true
-      //     }
-      //     this.loading = false
-      //   })
-      // }
     },
     mounted () {
       categoryTreeList().then(res => {
