@@ -17,6 +17,9 @@ const Pms = () => import('/page/Pms/product/index.vue')
 // const SearchProduct = () => import('/page/SearchProduct/searchProduct.vue')
 // const Brand = () => import('/page/Pms/brand/index.vue')
 const PmsDetails = () => import('/page/Pms/product/item/productDetail.vue')
+const User = () => import('/page/User/user.vue')
+const Order = () => import('/page/Order/order.vue')
+const ReceiveAddress = () => import('/page/User/children/addressList.vue')
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -31,13 +34,15 @@ export default new Router({
     },
     {path: '/pms',
       name: 'pms',
-      component: Pms,
-      children: [
-        {path: '/pmsDetails', name: 'pmsDetails', component: PmsDetails}
-      ]
+      component: Pms
+      // children: [
+      //   {path: '/pmsDetails', name: 'pmsDetails', component: PmsDetails}
+      // ]
     },
+    {path: '/pmsDetails', name: 'pmsDetails', component: PmsDetails},
     {path: '/login', name: 'login', component: Login},
     {path: '/register', name: 'register', component: Register},
+    // {path: '/order',}
     // {path: '/cart', name: 'cart', component: Cart},
     // {path: '/refreshsearch', name: 'refreshsearch', component: RefreshSearch},
     // {
@@ -52,21 +57,21 @@ export default new Router({
     //     {path: 'wechat', name: 'wechat', component: Wechat}
     //   ]
     // },
-    // {
-    //   path: '/user',
-    //   name: 'user',
-    //   component: user,
-    //   redirect: '/user/orderList',
-    //   children: [
-    //     {path: 'orderList', name: '订单列表', component: orderList},
-    //     {path: 'orderDetail', name: '订单详情', component: orderDetail},
-    //     {path: 'information', name: '账户资料', component: information},
-    //     {path: 'addressList', name: '收货地址', component: addressList},
-    //     {path: 'coupon', name: '我的优惠', component: coupon},
-    //     {path: 'support', name: '售后服务', component: support},
-    //     {path: 'aihuishou', name: '以旧换新', component: aihuishou}
-    //   ]
-    // },
+    {
+      path: '/user',
+      name: 'user',
+      component: User,
+      redirect: '/user/orderList',
+      children: [
+        {path: 'orderList', name: '订单列表', component: Order},
+        // {path: 'orderDetail', name: '订单详情', component: orderDetail},
+        // {path: 'information', name: '账户资料', component: information},
+        {path: 'addressList', name: '收货地址', component: ReceiveAddress}
+        // {path: 'coupon', name: '我的优惠', component: coupon},
+        // {path: 'support', name: '售后服务', component: support},
+        // {path: 'aihuishou', name: '以旧换新', component: aihuishou}
+      ]
+    },
     {path: '/checkout', name: 'checkout', component: checkout},
     {path: '*', redirect: '/home'}
   ]

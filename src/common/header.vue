@@ -33,10 +33,10 @@
                       <!--头像-->
                       <li class="nav-user-avatar">
                         <div>
-                          <span class="avatar" :style="{backgroundImage:'url('+userInfo.info.file+')'}">
+                          <span class="avatar" :style="{backgroundImage:'url('+userInfo.icon+')'}">
                           </span>
                         </div>
-                        <p class="name">{{userInfo.info.username}}</p>
+                        <p class="name">{{userInfo.name}}</p>
                       </li>
                       <li>
                         <router-link to="/user/orderList">我的订单</router-link>
@@ -148,7 +148,6 @@
   // import {  categoryTreeList } from '/api/product'
   // import { getQuickSearch } from 'src/api/search'
   import { setStore, getStore, removeStore } from '/utils/storage'
-  // import { }
   // import { categoryTreeList } from '/api/product'
   import { loginOut } from '/api/user'
   // import store from '../store/'
@@ -314,7 +313,7 @@
       },
       // 控制顶部
       navFixed () {
-        if (this.$route.path === '/goods' || this.$route.path === '/home' || this.$route.path === '/goodsDetails' || this.$route.path === '/thanks') {
+        if (this.$route.path === '/pms' || this.$route.path === '/home' || this.$route.path === '/pmsDetails') {
           var st = document.documentElement.scrollTop || document.body.scrollTop
           st >= 100 ? this.st = true : this.st = false
           // 计算小圆当前位置
@@ -328,13 +327,10 @@
       },
       // 退出登陆
       _loginOut () {
-        let params = {
-          params: {
-            token: this.token
-          }
-        }
-        loginOut(params).then(res => {
+        loginOut().then(res => {
           removeStore('buyCart')
+          removeStore('token')
+          removeStore('userId')
           window.location.href = '/'
         })
       },
@@ -344,19 +340,14 @@
         // let fullPath = this.$route.fullPath
         if (path === '/' || path === '/home') {
           this.changePage(-1)
-        } else if (path === '/goods') {
+        } else if (path === '/pms') {
           this.changePage(-2)
         } else {
           this.changePage(0)
         }
       },
       openProduct (productId) {
-        window.open('//' + window.location.host + '/#/goodsDetails?productId=' + productId)
-      },
-      _getNavList () {
-        // navList().then(res => {
-        //   this.navList = res.result
-        // })
+        window.open('//' + window.location.host + '/#/pmsDetails?productId=' + productId)
       }
     },
     mounted () {

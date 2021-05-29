@@ -115,7 +115,7 @@
       // 跳转到商品详情
       turnTo (productId) {
         this.$router.push({
-          path: '/pms/pmsDetails',
+          path: '/pmsDetails',
           query: {
             productId: productId
           }

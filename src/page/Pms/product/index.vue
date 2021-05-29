@@ -44,6 +44,7 @@
   import mallGoods from '/components/mallGoods'
   import { categoryTreeList } from '/api/product'
   import YButton from '../../../components/YButton'
+  import YShelf from '/components/shelf'
   export default {
     data () {
       return {
@@ -142,7 +143,7 @@
         }
       })
     },
-    components: {YButton, mallGoods}
+    components: {YButton, mallGoods, YShelf}
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>

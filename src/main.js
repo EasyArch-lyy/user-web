@@ -51,6 +51,24 @@ router.beforeEach(function (to, from, next) {
         next('/login')
       }
     } else {
+      // {
+      //     "code":200,
+      //     "message":"操作成功",
+      //     "data":{
+      //         "id":10,
+      //         "memberLevelId":4,
+      //         "username":"jinxiu",
+      //         "password":"$2a$10$7OfXTQc0DfHkgvw1mf59CObhNmL9aYryfF4ib9og/JuQ17DAvWROW",
+      //         "phone":"18522015989",
+      //         "status":1,
+      //         "createTime":"2021-05-26T07:40:21.000+00:00",
+      //         "icon":"https://jinxiumall.oss-cn-beijing.aliyuncs.com/mall/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210223100724.jpg
+      // ",
+      //         "state":1,
+      //         "token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqaW54aXUiLCJjcmVhdGVkIjoxNjIyMjcxMjkzODkwLCJleHAiOjE2MjI4NzYwOTN9.0HisdjkwtrtQ3AfYqoExkmqQtOiLChT_8BfxRFtlQiEd6iWtskFQ2FjL0MfR_I6c45odSvBO2zovOAcKqq2nvw",
+      //         "message":"用户登录成功"
+      //     }
+      // }
       store.commit('RECORD_USERINFO', {info: res.data})
       if (to.path === '/login') { //  跳转到
         next({path: '/'})

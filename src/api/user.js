@@ -5,8 +5,8 @@ export const userLogin = (params) => {
   return http.fetchPost('/member/login', params)
 }
 // 退出登陆
-export const loginOut = (params) => {
-  return http.fetchGet('/member/loginOut', params)
+export const loginOut = () => {
+  return http.fetchPost('/member/logout')
 }
 // 用户信息
 export const userInfo = (params) => {
