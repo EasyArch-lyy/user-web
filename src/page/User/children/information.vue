@@ -3,7 +3,7 @@
     <y-shelf title="账户资料">
       <div slot="content">
         <div class="avatar-box">
-          <div class=img-box><img :src="userInfo.icon" alt=""></div>
+          <div class=img-box><img :src="userInfo.icon" :alt="userInfo.icon"></div>
           <div class="r-box">
             <h3 style="margin-left: 13px;">修改头像</h3>
             <y-button text="上传头像" classStyle="main-btn" style="margin: 0;" @btnClick="editAvatar()"></y-button>
@@ -82,7 +82,6 @@
   import vueCropper from 'vue-cropper'
   import { mapState, mapMutations } from 'vuex'
   import { getStore } from '/utils/storage'
-  // import { userInfo } from '../../../api/user'
   export default {
     data () {
       return {
@@ -181,7 +180,6 @@
     },
     created () {
       this.userId = getStore('userId')
-      console.debug(this.userInfo)
       this.token = getStore('token')
     },
     components: {

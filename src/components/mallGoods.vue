@@ -6,11 +6,24 @@
           <img v-lazy="msg.pic" :alt="msg.name" :key="msg.pic">
         </a>
       </div>
+<!--
+id : 7
+parentId : 1
+name : "外套"
+level : 1
+productCount : 100
+productUnit : "件"
+navStatus : 1
+showStatus : 1
+sort : 0
+icon : ""
+keywords : "外套"
+children -->
       <h6 class="good-title" v-html="msg.name">{{msg.name}}</h6>
-      <h3 class="sub-title ellipsis">{{msg.subTitle}}</h3>
+      <h3 class="sub-title ellipsis">{{msg.keywords}}</h3>
       <div class="good-price pr">
         <div class="ds pa">
-          <a @click="openProduct(msg.productCategoryId)">
+          <a @click="openProduct(msg.id)">
             <y-button text="查看详情" style="margin: 0 5px"></y-button>
           </a>
           <y-button text="加入购物车"
@@ -41,7 +54,7 @@
     methods: {
       ...mapMutations(['ADD_CART', 'ADD_ANIMATION', 'SHOW_CART']),
       goodsDetails (id) {
-        this.$router.push({path: 'goodsDetails/productId=' + id})
+        this.$router.push({path: 'pmsDetails/productId=' + id})
       },
       openProduct (id) {
         window.open('//' + window.location.host + '/#/goodsDetails?productId=' + id)

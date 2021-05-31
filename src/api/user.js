@@ -26,8 +26,8 @@ export const updateheadimage = (params) => {
 }
 
 // 获取用户收货地址
-export const getReceiveAddress = () => {
-  return http.fetchGet('/member/address/list')
+export const getReceiveAddress = (config) => {
+  return http.fetchGetHeader('/member/address/list', '', config)
 }
 
 // 添加用户收货地址

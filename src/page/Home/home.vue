@@ -29,7 +29,7 @@
       </div>
       <!--新品栏展示-->
       <section class="w mt30 clearfix">
-        <y-shelf :title="热门商品" content="热门商品">
+        <y-shelf title="新品展示">
           <div slot="content" class="hot">
             <mall-goods :msg="item" :key="i" v-for="(item, i) in newProducts" @click="turnTo(item.productCategoryId)"></mall-goods>
           </div>

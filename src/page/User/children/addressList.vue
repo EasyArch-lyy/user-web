@@ -109,12 +109,14 @@
           message: m
         })
       },
-      _addressList () {
-        getReceiveAddress().then(res => {
+      //  header: {
+      //  token: 'xxx'
+    // }
+      _addressList (config) {
+        getReceiveAddress(config).then(res => {
           let data = res.data
           if (data.length) {
             this.addList = res.data
-            // this.addressId = res.result[0].addressId || '1'
           } else {
             this.addList = []
           }
@@ -183,7 +185,11 @@
     },
     created () {
       this.userId = getStore('userId')
-      this._addressList()
+      this.token = getStore('token')
+      let config = {
+        Authorization: `Bearer: ${this.token}`
+      }
+      this._addressList(config)
     },
     components: {
       YButton,

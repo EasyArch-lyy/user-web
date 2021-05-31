@@ -1,4 +1,5 @@
 <template>
+<!--  <y-header></y-header>-->
   <div class="goods">
     <div class="nav">
       <div class="w">
@@ -9,7 +10,7 @@
     </div>
     <div v-loading="loading" element-loading-text="加载中..." style="min-height: 35vw;">
       <!--遍历商品类型-->
-      <div v-for="(item, i) in categoryKind">
+      <div v-for="(item, i) in categoryKind" v-if="item.parent_id === 0">
         <!--商品  todo 实现折叠展开-->
         <div class="img-item" v-if="!noResult">
           <div class="goods-box w">

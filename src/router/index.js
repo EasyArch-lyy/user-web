@@ -18,9 +18,10 @@ const Pms = () => import('/page/Pms/product/index.vue')
 // const Brand = () => import('/page/Pms/brand/index.vue')
 const PmsDetails = () => import('/page/Pms/product/item/productDetail.vue')
 const User = () => import('/page/User/user.vue')
-const Order = () => import('/page/Order/order.vue')
 const ReceiveAddress = () => import('/page/User/children/addressList.vue')
 const Information = () => import('/page/User/children/information.vue')
+const Order = () => import('/page/User/children/order.vue')
+const Cageory = () => import('/page/Pms/cageory/cageoryDetail.vue')
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -43,6 +44,7 @@ export default new Router({
     {path: '/pmsDetails', name: 'pmsDetails', component: PmsDetails},
     {path: '/login', name: 'login', component: Login},
     {path: '/register', name: 'register', component: Register},
+    {path: '/cageoryDetails', name: 'cageoryDetails', component: Cageory},
     // {path: '/order',}
     // {path: '/cart', name: 'cart', component: Cart},
     // {path: '/refreshsearch', name: 'refreshsearch', component: RefreshSearch},

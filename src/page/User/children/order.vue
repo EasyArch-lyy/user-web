@@ -73,7 +73,8 @@
   </div>
 </template>
 <script>
-  import { orderList, delOrder } from '/api/goods'
+  import { delOrder } from '/api/goods'
+  import { getOrderListByTerm } from '/api/order'
   import YShelf from '/components/shelf'
   import { getStore } from '/utils/storage'
   export default {
@@ -139,8 +140,8 @@
             page: this.currentPage
           }
         }
-        orderList(params).then(res => {
-          this.orderList = res.result.data
+        getOrderListByTerm(params).then(res => {
+          this.orderList = res.data
           this.total = res.result.total
           this.loading = false
         })
