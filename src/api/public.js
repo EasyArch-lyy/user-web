@@ -29,5 +29,14 @@ export default {
         reject(error)
       })
     })
+  },
+  fetchPostHeader (url, params = {}, config) {
+    return new Promise((resolve, reject) => {
+      axios.post(url, params, config).then(res => {
+        resolve(res.data)
+      }).cache(error => {
+        reject(error)
+      })
+    })
   }
 }

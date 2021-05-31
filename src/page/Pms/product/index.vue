@@ -3,17 +3,18 @@
 <!--商品分类界面：选择类型进入访问类型下商品列表  -->
   <div class="goods">
     <div class="nav">
-<!--      <div class="w">-->
-<!--        <a href="javascript:;" :class="{active:sortType===1}" @click="reset()">综合排序</a>-->
-<!--        <a href="javascript:;" @click="sortByPrice(1)" :class="{active:sortType===2}">价格从低到高</a>-->
-<!--        <a href="javascript:;" @click="sortByPrice(-1)" :class="{active:sortType===3}">价格从高到低</a>-->
-<!--      </div>-->
     </div>
     <div v-loading="loading" element-loading-text="加载中..." style="min-height: 35vw;">
       <!--遍历商品类型-->
-      <div v-for="(item, i) in categoryKind" v-if="item.parent_id === 0">
-        <!--商品  todo 实现折叠展开-->
-        <div class="img-item" v-if="!noResult">
+      <div v-for="(item, i) in categoryKind">
+        <!--获取最上层父级类型-->
+        <div v-if="item.parent_id == 0">
+
+        </div>
+        <div v-else>
+          <div></div>
+        </div>
+<!-- <div class="img-item" v-if="!noResult">
           <div class="goods-box w">
             <cageory v-for="(itemm, j) in item.children" :key="j" :msg="itemm"></cageory>
           </div>
@@ -27,7 +28,7 @@
             layout="total, sizes, prev, pager, next, jumper"
             :total="total">
           </el-pagination>
-        </div>
+        </div>       -->
       </div>
       <div class="no-info" v-if="noResult">
         <div class="no-data">
@@ -35,13 +36,14 @@
           <br> 抱歉！暂时还没有商品
         </div>
       </div>
-      <div class="no-data">
+      <div class="no-data" v-if="error">
         <img src="static/images/error.png">
         <br> 抱歉！ 出错了...
       </div>
     </div>
   </div>
 </template>
+
 <script>
   import mallGoods from '/components/mallGoods'
   import cageory from '/components/cageory'
@@ -63,7 +65,8 @@
         total: 0,
         pageSize: 20,
         sortType: 1,
-        loading: true
+        loading: true,
+        error: true
       }
     },
     methods: {

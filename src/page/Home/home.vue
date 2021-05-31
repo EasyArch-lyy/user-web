@@ -116,13 +116,13 @@
       // },
       // 跳转到商品详情
       turnTo (id) {
-        window.open('//' + window.location.host + '/#/pmsDetails?productId=' + id)
-        // this.$router.push({
-        //   path: '/pmsDetails',
-        //   query: {
-        //     productId: id
-        //   }
-        // })
+        // window.open('//' + window.location.host + '/pms/pmsDetails?productId=' + id)
+        this.$router.push({
+          path: '/pms/pmsDetails',
+          query: {
+            productId: id
+          }
+        })
       },
       // 跳转到品牌详情
       turnToBrand (item) {

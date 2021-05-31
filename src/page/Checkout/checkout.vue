@@ -221,7 +221,7 @@
         })
       },
       goodsDetails (id) {
-        window.open(window.location.origin + '#/productDetails?productId=' + id)
+        window.open(window.location.origin + '#/pms/productDetails?productId=' + id)
       },
       // 获取购物车内容
       _getCartList () {

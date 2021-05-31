@@ -17,6 +17,21 @@
               </div>
               <!--列表-->
               <div class="cart-table" v-for="(item,i) in cartList" :key="i">
+<!--                 {
+      "id": 12,
+      "productId": 26,
+      "productSkuId": 90,
+      "memberId": 1,
+      "quantity": 1,
+      "price": 3788,
+      "productName": "华为 HUAWEI P20",
+      "productSubTitle": "AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待手机 双卡双待",
+      "productSkuCode": "201806070026001",
+      "memberNickname": "windir",
+      "createDate": "2018-08-27T08:53:44.000+00:00",
+      "deleteStatus": 0,
+      "productCategoryId": 19
+    }-->
                 <div class="cart-group divide pr" :data-productid="item.productId">
                   <div class="cart-top-items">
                     <div class="cart-items clearfix">
@@ -48,9 +63,9 @@
                       <!--商品数量-->
                       <div>
                         <!--总价格-->
-                        <div class="subtotal" style="font-size: 14px">¥ {{item.salePrice * item.productNum}}</div>
+                        <div class="subtotal" style="font-size: 14px">¥ {{item.price * item.quantity}}</div>
                         <!--数量-->
-                        <buy-num :num="item.productNum"
+                        <buy-num :num="item.quantity"
                                  :id="item.productId"
                                  :checked="item.checked"
                                  style="height: 140px;
@@ -62,7 +77,7 @@
                         >
                         </buy-num>
                         <!--价格-->
-                        <div class="price1">¥ {{item.salePrice}}</div>
+                        <div class="price1">¥ {{item.price}}</div>
                       </div>
                     </div>
                   </div>
@@ -105,7 +120,7 @@
           </div>
           <p style="text-align: center;padding: 20px;color: #8d8d8d">你的购物车空空如也</p>
           <div style="text-align: center">
-            <router-link to="/goods">
+            <router-link to="/pms">
               <y-button text="现在选购" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d"></y-button>
             </router-link>
           </div>
@@ -118,6 +133,7 @@
 </template>
 <script>
   import { getCartList, cartEdit, editCheckAll, cartDel, delCartChecked } from '/api/goods'
+  // import {}
   import { mapMutations, mapState } from 'vuex'
   import YButton from '/components/YButton'
   import YHeader from '/common/header'
@@ -132,6 +148,32 @@
         submit: true
       }
     },
+    /*
+    *{购物车查询结果
+  "code": 200,
+  "message": "操作成功",
+  "data": [
+    {
+      "id": 12,
+      "productId": 26,
+      "productSkuId": 90,
+      "memberId": 1,
+      "quantity": 1,
+      "price": 3788,
+      "productName": "华为 HUAWEI P20",
+      "productSubTitle": "AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待手机 双卡双待",
+      "productSkuCode": "201806070026001",
+      "memberNickname": "windir",
+      "createDate": "2018-08-27T08:53:44.000+00:00",
+      "deleteStatus": 0,
+      "productCategoryId": 19
+    }
+  ]
+}
+    *
+    *
+    *
+    * */
     computed: {
       ...mapState(
         ['cartList']
@@ -187,7 +229,7 @@
         })
       },
       goodsDetails (id) {
-        window.open(window.location.origin + '#/goodsDetails?productId=' + id)
+        window.open(window.location.origin + '#/pms/pmsDetails?productId=' + id)
       },
       // 全选
       editCheckAll () {
@@ -206,7 +248,7 @@
             checked
           }
         ).then(res => {
-          if (res.success === true) {
+          if (res.code === 200) {
             this.EDIT_CART(
               {
                 productId,
@@ -247,9 +289,9 @@
         this.$router.push({path: 'checkout'})
       },
       delChecked () {
-        getCartList({userId: getStore('userId')}).then(res => {
-          if (res.success === true) {
-            res.result.forEach(item => {
+        getCartList(this.token).then(res => {
+          if (res.code === 200) {
+            res.data.forEach(item => {
               if (item.checked === '1') {
                 let productId = item.productId
                 this.EDIT_CART({productId})
@@ -266,6 +308,7 @@
     },
     mounted () {
       this.userId = getStore('userId')
+      this.token = getStore('token')
       this.INIT_BUYCART()
     },
     components: {

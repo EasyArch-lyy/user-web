@@ -14,7 +14,6 @@ const checkout = () => import('/page/Checkout/checkout.vue')
 // const Alipay = () => import('/page/Order/alipay.vue')
 // const Wechat = () => import('/page/Order/wechat.vue')
 const Pms = () => import('/page/Pms/product/index.vue')
-// const SearchProduct = () => import('/page/SearchProduct/searchProduct.vue')
 // const Brand = () => import('/page/Pms/brand/index.vue')
 const PmsDetails = () => import('/page/Pms/product/item/productDetail.vue')
 const User = () => import('/page/User/user.vue')
@@ -36,12 +35,12 @@ export default new Router({
     },
     {path: '/pms',
       name: 'pms',
-      component: Pms
-      // children: [
-      //   {path: '/pmsDetails', name: 'pmsDetails', component: PmsDetails}
-      // ]
+      component: Pms,
+      children: [
+        {path: '/pmsDetails', name: 'pmsDetails', component: PmsDetails}
+      ]
     },
-    {path: '/pmsDetails', name: 'pmsDetails', component: PmsDetails},
+    // {path: '/pmsDetails', name: 'pmsDetails', component: PmsDetails},
     {path: '/login', name: 'login', component: Login},
     {path: '/register', name: 'register', component: Register},
     {path: '/cageoryDetails', name: 'cageoryDetails', component: Cageory},

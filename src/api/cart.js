@@ -6,8 +6,8 @@ export const addCart = (params) => {
 }
 
 // 获取某个会员的购物车列表
-export const cartList = () => {
-  return http.fetchGet('/cart/list')
+export const cartList = (config) => {
+  return http.fetchGetHeader('/cart/list', '', config)
 }
 
 // 从购物车删除商品
@@ -29,4 +29,9 @@ export const updateQuantity = (params) => {
 // 清空购物车
 export const clear = () => {
   return http.fetchPost('/cart/clear')
+}
+
+// 退货
+export const returnApply = (params, config) => {
+  return http.fetchPostHeader('', params, config)
 }
