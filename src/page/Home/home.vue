@@ -5,7 +5,8 @@
         <div class="bg" ref="bg"
           @mouseover="bgOver($refs.bg)" @mousemove="bgMove($refs.bg,$event)" @mouseout="bgOut($refs.bg)">
           <transition name="fade">
-            <div v-for="(item, i) in advertisements" v-if="i===mark" :key="i" style="position:absolute" @click="linkTo(item)" @mouseover="stopTimer" @mouseout="startTimer">
+<!--            @click="linkTo(item)"-->
+            <div v-for="(item, i) in advertisements" v-if="i===mark" :key="i" style="position:absolute" @mouseover="stopTimer" @mouseout="startTimer">
               <img v-if="item.pic" class="item" :src="item.pic"/>
               <div v-text="item.note"></div>
             </div>
@@ -21,7 +22,8 @@
       <!--品牌栏展示-->
       <div class="activity-panel">
         <ul class="box">
-          <li class="content" v-for="(item, i) in brands" :key="i" @click="linkTo(item)">
+<!--          @click="linkTo(item)-->
+          <li class="content" v-for="(item, i) in brands" :key="i">
             <img class="i" :src="item.bigPic">
             <a class="cover-link"></a>
           </li>
@@ -31,7 +33,7 @@
       <section class="w mt30 clearfix">
         <y-shelf title="新品展示">
           <div slot="content" class="hot">
-            <mall-goods :msg="item" :key="i" v-for="(item, i) in newProducts" @click="turnTo(item.productCategoryId)"></mall-goods>
+            <mall-goods :msg="item" :key="i" v-for="(item, i) in newProducts" @click="turnTo(item.id)"></mall-goods>
           </div>
         </y-shelf>
       </section>
@@ -98,28 +100,29 @@
         clearInterval(this.timer)
       },
       // 点击广告跳转
-      linkTo (item) {
-        if (item.type === 0 || item.type === 2) {
-          // 关联商品
-          this.$router.push({
-            path: '/goodsDetails',
-            query: {
-              productId: item.productId
-            }
-          })
-        } else {
-          // 完整链接
-          window.location.href = item.fullUrl
-        }
-      },
+      // linkTo (item) {
+      //   if (item.type === 0 || item.type === 2) {
+      //     // 关联商品
+      //     this.$router.push({
+      //       path: '/goodsDetails',
+      //       query: {
+      //         productId: item.productId
+      //       }
+      //     })
+      //   } else {
+      //     // 完整链接
+      //     window.location.href = item.fullUrl
+      //   }
+      // },
       // 跳转到商品详情
-      turnTo (productId) {
-        this.$router.push({
-          path: '/pmsDetails',
-          query: {
-            productId: productId
-          }
-        })
+      turnTo (id) {
+        window.open('//' + window.location.host + '/#/pmsDetails?productId=' + id)
+        // this.$router.push({
+        //   path: '/pmsDetails',
+        //   query: {
+        //     productId: id
+        //   }
+        // })
       },
       // 跳转到品牌详情
       turnToBrand (item) {

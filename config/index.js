@@ -29,16 +29,16 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/member/*': {
-        target: 'http://8.130.55.131:8085'  // 请求本地 需要xmall后台项目 默认127.0.0.1:7777
+        target: 'http://localhost:8085'  // 请求本地 需要xmall后台项目 默认127.0.0.1:7777
       },
       '/home/*': {
-        target: 'http://8.130.55.131:8085'  // 请求本地 需要xmall后台项目 默认127.0.0.1:7777
+        target: 'http://localhost:8085'  // 请求本地 需要xmall后台项目 默认127.0.0.1:7777
       },
       '/product/*' : {
-        target: 'http://8.130.55.131:8085'
+        target: 'http://localhost:8085'
       },
       '/cart/*': {
-        target: 'http://8.130.55.131:8085'
+        target: 'http://localhost:8085'
       },
       '/esProduct/*': {
         target: 'http://localhost:8081'  // 请求es项目

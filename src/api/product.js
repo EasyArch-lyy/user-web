@@ -10,6 +10,10 @@ export const categoryTreeList = () => {
   return http.fetchGet('/product/categoryTreeList')
 }
 
+export const categoryList = (id) => {
+  return http.fetchGet(`/categoryList/${id}`)
+}
+
 // 根据id获取商品详情
 export const categoryDetail = (param) => {
   return http.fetchGet(`/product/${param}`)

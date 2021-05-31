@@ -1,12 +1,13 @@
 <template>
 <!--  <y-header></y-header>-->
+<!--商品分类界面：选择类型进入访问类型下商品列表  -->
   <div class="goods">
     <div class="nav">
-      <div class="w">
-        <a href="javascript:;" :class="{active:sortType===1}" @click="reset()">综合排序</a>
-        <a href="javascript:;" @click="sortByPrice(1)" :class="{active:sortType===2}">价格从低到高</a>
-        <a href="javascript:;" @click="sortByPrice(-1)" :class="{active:sortType===3}">价格从高到低</a>
-      </div>
+<!--      <div class="w">-->
+<!--        <a href="javascript:;" :class="{active:sortType===1}" @click="reset()">综合排序</a>-->
+<!--        <a href="javascript:;" @click="sortByPrice(1)" :class="{active:sortType===2}">价格从低到高</a>-->
+<!--        <a href="javascript:;" @click="sortByPrice(-1)" :class="{active:sortType===3}">价格从高到低</a>-->
+<!--      </div>-->
     </div>
     <div v-loading="loading" element-loading-text="加载中..." style="min-height: 35vw;">
       <!--遍历商品类型-->
@@ -14,7 +15,7 @@
         <!--商品  todo 实现折叠展开-->
         <div class="img-item" v-if="!noResult">
           <div class="goods-box w">
-            <mall-goods v-for="(itemm, j) in item.children" :key="j" :msg="itemm"></mall-goods>
+            <cageory v-for="(itemm, j) in item.children" :key="j" :msg="itemm"></cageory>
           </div>
           <el-pagination
             v-if="!noResult&&error"
@@ -43,6 +44,7 @@
 </template>
 <script>
   import mallGoods from '/components/mallGoods'
+  import cageory from '/components/cageory'
   import { categoryTreeList } from '/api/product'
   import YButton from '../../../components/YButton'
   import YShelf from '/components/shelf'
@@ -111,7 +113,7 @@
         }
       })
     },
-    components: {YButton, mallGoods, YShelf, YHeader}
+    components: {YButton, mallGoods, YShelf, YHeader, cageory}
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
